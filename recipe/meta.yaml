@@ -31,8 +31,8 @@ requirements:
     - pysparse    # [not py3k]
     - pytrilinos  # [not win and not py3k]
     - mpi4py      # [not win and not py3k]
-    - matplotlib <3.0 # [py2k]
-    - matplotlib >3.0 # [py3k]
+    - matplotlib <3.0  # [py2k]
+    - matplotlib >3.0  # [py3k]
     - mayavi
     - weave       # [not py3k]
 
