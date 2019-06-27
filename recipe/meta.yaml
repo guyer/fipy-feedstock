@@ -1,6 +1,6 @@
 {% set name = "FiPy" %}
 {% set version = "3.2" %}
-{% set sha256 = "1525da72730c9eca188bb1b2ad1e264d0fd6de3c9198fc7ab5de426868110422" %}
+{% set sha256 = "4b7d0deb718bcc24882dd46bec48564ff2fe85b1f84851bd0225ff1893cc4a35" %}
 
 package:
   name: {{ name|lower }}
@@ -11,7 +11,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 0
+  number: 1
   script:
     - 2to3 --write .  # [py3k]
     - "{{ PYTHON }} -m pip install . --no-deps -vv"
@@ -31,9 +31,10 @@ requirements:
     - pysparse    # [not py3k]
     - pytrilinos  # [not win and not py3k]
     - mpi4py      # [not win and not py3k]
-    - matplotlib
+    - matplotlib <3.0  # [py2k]
+    - matplotlib >3.0  # [py3k]
     - mayavi
-    - weave       # [not py3k]
+#    - weave <=0.16     # [not py3k]
 
 test:
   imports:
