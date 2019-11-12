@@ -1,6 +1,5 @@
 {% set name = "FiPy" %}
 {% set version = "3.3" %}
-{% set sha256 = "bd6731d99fb3003f3a1ef402f520385d4d21afc5de45fc1c6b7b5da7d45de858" %}
 
 package:
   name: {{ name|lower }}
@@ -8,7 +7,7 @@ package:
 
 source:
   url: https://github.com/usnistgov/{{ name }}/archive/{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  sha256: 702f1dffc5799e47d879383bbf66bf4f1baa92e40e6241dc9e59845b6ff4df2c
 
 build:
   number: 0
@@ -22,7 +21,6 @@ requirements:
     - pip
     - numpy
     - scipy
-    - setuptools
   run:
     - python
     - numpy
