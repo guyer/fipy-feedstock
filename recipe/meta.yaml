@@ -10,7 +10,7 @@ source:
   sha256: 702f1dffc5799e47d879383bbf66bf4f1baa92e40e6241dc9e59845b6ff4df2c
 
 build:
-  number: 0
+  number: 1
   script:
     - "{{ PYTHON }} -m pip install . --no-deps -vv"
 
@@ -19,19 +19,29 @@ requirements:
     - future
     - python
     - pip
-    - numpy
-    - scipy
+    - numpy ==1.11.3 py27hab51878_1207  # [win and py2k]
+    - numpy  # [not (win and py2k)]
+    - scipy ==1.2.1 py27h4c3ab11_0  # [win and py2k]
+    - scipy  # [not (win and py2k)]
+    - libblas ==3.8.0 8_mkl  # [win and py2k]
+    - libcblas ==3.8.0 8_mkl  # [win and py2k]
+    - liblapack ==3.8.0 8_mkl  # [win and py2k]
   run:
+    - future
     - python
-    - numpy
-    - scipy
+    - numpy ==1.11.3 py27hab51878_1207  # [win and py2k]
+    - numpy  # [not (win and py2k)]
+    - scipy ==1.2.1 py27h4c3ab11_0  # [win and py2k]
+    - scipy  # [not (win and py2k)]
     - gmsh <4.0   # [not (win and (py2k or x86))]
+    - mpich       # [not win]
+    - mpi4py      # [not win]
+    - petsc4py    # [not win]
     - pysparse    # [not py3k]
-    - pytrilinos  # [not win and not py3k]
-    - mpi4py      # [not win and not py3k]
+    - pytrilinos ==12.10.1 py27h7127e17_2  # [not win and not py3k]
     - matplotlib <3.0  # [py2k]
     - matplotlib >3.0  # [py3k]
-    - mayavi
+    - mayavi  # [not (win and py2k)]
 
 test:
   imports:
