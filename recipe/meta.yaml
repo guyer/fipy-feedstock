@@ -10,40 +10,38 @@ source:
   sha256: 702f1dffc5799e47d879383bbf66bf4f1baa92e40e6241dc9e59845b6ff4df2c
 
 build:
-  number: 1
+  number: 2
   script:
     - "{{ PYTHON }} -m pip install . --no-deps -vv"
 
 requirements:
   host:
-    - future
     - python
     - pip
-    - numpy ==1.11.3 py27hab51878_1207  # [win and py2k]
-    - numpy  # [not (win and py2k)]
-    - scipy ==1.2.1 py27h4c3ab11_0  # [win and py2k]
-    - scipy  # [not (win and py2k)]
-    - libblas ==3.8.0 8_mkl  # [win and py2k]
-    - libcblas ==3.8.0 8_mkl  # [win and py2k]
-    - liblapack ==3.8.0 8_mkl  # [win and py2k]
-  run:
     - future
+  run:
     - python
-    - numpy ==1.11.3 py27hab51878_1207  # [win and py2k]
-    - numpy  # [not (win and py2k)]
-    - scipy ==1.2.1 py27h4c3ab11_0  # [win and py2k]
-    - scipy  # [not (win and py2k)]
-    - gmsh <4.0   # [not (win and (py2k or x86))]
-    - mpich       # [not win]
-    - mpi4py      # [not win]
-    - petsc4py    # [not win]
-    - pysparse    # [not py3k]
-    - pytrilinos ==12.10.1 py27h7127e17_2  # [not win and not py3k]
-    - matplotlib <3.0  # [py2k]
-    - matplotlib >3.0  # [py3k]
-    - mayavi  # [not (win and py2k)]
+    - numpy
+    - scipy
+    - matplotlib-base
+    - future
+    - mpich       # [unix]
+    - mpi4py      # [unix]
+    - pysparse    # [py2k]
+    - petsc4py    # [unix]
+    - pytrilinos  # [unix and py2k]
+    - mayavi      # [not (win and py2k)]
+  # fipy still doesn't support gmsh 4.0, an optional package
+  # But gmsh 3 hasn't been built in a long time.
+  # So we leave it as an optional dependency should the users want
+  # to isntall it.
+  # As it is old, it might have some strange pinnings.
+  run_constrained:
+    - gmsh <4.0   # [not (win and py2k)]
 
 test:
+  requires:
+    - gmsh        # [not (win and py2k)]
   imports:
     - fipy
 
