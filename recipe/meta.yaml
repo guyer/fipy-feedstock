@@ -10,7 +10,7 @@ source:
   sha256: 702f1dffc5799e47d879383bbf66bf4f1baa92e40e6241dc9e59845b6ff4df2c
 
 build:
-  number: 2
+  number: 3
   script:
     - "{{ PYTHON }} -m pip install . --no-deps -vv"
 
@@ -31,17 +31,9 @@ requirements:
     - petsc4py    # [unix]
     - pytrilinos  # [unix and py2k]
     - mayavi      # [not (win and py2k)]
-  # fipy still doesn't support gmsh 4.0, an optional package
-  # But gmsh 3 hasn't been built in a long time.
-  # So we leave it as an optional dependency should the users want
-  # to isntall it.
-  # As it is old, it might have some strange pinnings.
-  run_constrained:
-    - gmsh <4.0   # [not (win and py2k)]
+    - gmsh        # [not (win and py2k)]
 
 test:
-  requires:
-    - gmsh        # [not (win and py2k)]
   imports:
     - fipy
 
