@@ -10,7 +10,7 @@ source:
   sha256: 702f1dffc5799e47d879383bbf66bf4f1baa92e40e6241dc9e59845b6ff4df2c
 
 build:
-  number: 3
+  number: 4
   script:
     - "{{ PYTHON }} -m pip install . --no-deps -vv"
 
@@ -31,7 +31,7 @@ requirements:
     - petsc4py    # [unix]
     - pytrilinos  # [unix and py2k]
     - mayavi      # [not (win and py2k)]
-    - gmsh        # [not (win and py2k)]
+    - gmsh <4.0   # [not (win and py2k)]
 
 test:
   imports:
