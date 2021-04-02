@@ -5,9 +5,13 @@ Home: http://www.ctcms.nist.gov/fipy
 
 Package license: NIST public domain
 
-Feedstock license: BSD-3-Clause
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/fipy-feedstock/blob/master/LICENSE.txt)
 
 Summary: A finite volume partial differential equation solver using Python
+
+Development: https://github.com/usnistgov/fipy
+
+Documentation: http://www.ctcms.nist.gov/fipy
 
 FiPy is an object oriented, partial differential equation (PDE) solver,
 written in Python, based on a standard finite volume (FV) approach. The
@@ -207,9 +211,9 @@ build distinct package versions.
 
 In order to produce a uniquely identifiable distribution:
  * If the version of a package **is not** being increased, please add or increase
-   the [``build/number``](https://conda.io/docs/user-guide/tasks/build-packages/define-metadata.html#build-number-and-string).
+   the [``build/number``](https://docs.conda.io/projects/conda-build/en/latest/resources/define-metadata.html#build-number-and-string).
  * If the version of a package **is** being increased, please remember to return
-   the [``build/number``](https://conda.io/docs/user-guide/tasks/build-packages/define-metadata.html#build-number-and-string)
+   the [``build/number``](https://docs.conda.io/projects/conda-build/en/latest/resources/define-metadata.html#build-number-and-string)
    back to 0.
 
 Feedstock Maintainers
