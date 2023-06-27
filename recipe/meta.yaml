@@ -1,5 +1,5 @@
 {% set name = "FiPy" %}
-{% set version = "3.4.3" %}
+{% set version = "3.4.4" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/usnistgov/{{ name }}/archive/{{ version }}.tar.gz
-  sha256: a22733102b4b519b44c5cd2089e535b7a2d596fea598878299bbf4eb05c33644
+  sha256: 9b69a3569d93bb56a2b7aa9813b2b70dccf607b934750ee59bd7ab8f16f63f6f
 
 build:
   number: 0
