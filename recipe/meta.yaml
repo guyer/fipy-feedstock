@@ -10,7 +10,7 @@ source:
   sha256: bda9338577b9f980cced4d27f638b6830c45f93c71e058413cd5352281a28523
 
 build:
-  number: 0
+  number: 1
   script:
     - {{ PYTHON }} -m pip install . --no-deps -vv
 
@@ -29,7 +29,7 @@ requirements:
     - mpich       # [unix]
     - mpi4py      # [unix]
     - pysparse    # [py2k]
-    - petsc4py    # [unix]
+    - petsc4py <3.21   # [unix]
     - pytrilinos  # [unix and py2k]
     - mayavi      # [not (win and py2k)]
   # fipy still doesn't take full advantage of gmsh 4.0, an optional package
