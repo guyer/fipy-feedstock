@@ -19,11 +19,11 @@ requirements:
   host:
     - python {{ python_min }}
     - pip
-    - setuptools
+    - setuptools <80
     - versioneer
   run:
     - python >={{ python_min }}
-    - setuptools
+    - setuptools <80
     - numpy
     - scipy
     - matplotlib-base
