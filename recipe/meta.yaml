@@ -23,7 +23,8 @@ requirements:
     - versioneer
   run:
     - python >={{ python_min }}
-    - setuptools <80
+    - setuptools <=72.0
+    - future
     - numpy
     - scipy
     - matplotlib-base
