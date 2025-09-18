@@ -37,7 +37,7 @@ test:
   imports:
     - fipy
   commands:
-    - fipy_test --modules
+    - python -c "import fipy; fipy.test()"
 
 about:
   home: http://www.ctcms.nist.gov/fipy
