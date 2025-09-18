@@ -1,5 +1,5 @@
 {% set name = "FiPy" %}
-{% set version = "3.4.5" %}
+{% set version = "4.0.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,42 +7,36 @@ package:
 
 source:
   url: https://github.com/usnistgov/{{ name }}/archive/{{ version }}.tar.gz
-  sha256: bda9338577b9f980cced4d27f638b6830c45f93c71e058413cd5352281a28523
+  sha256: 0bc02a81a7f7eb3f6f8b177b3ea4948228a320ee489960cffcfb6a9a823a8359
 
 build:
-  number: 1
+  noarch: python
+  number: 0
   script:
     - {{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
   host:
-    - python
+    - python {{ python_min }}
     - pip
-    - future
+    - setuptools
+    - versioneer
   run:
-    - python
+    - python >={{ python_min }}
+    - setuptools
     - numpy
     - scipy
     - matplotlib-base
-    - future
     - packaging
-    - mpich       # [unix]
-    - mpi4py      # [unix]
-    - pysparse    # [py2k]
-    - petsc4py <3.21   # [unix]
-    - pytrilinos  # [unix and py2k]
-    - mayavi      # [not (win and py2k)]
-  # fipy still doesn't take full advantage of gmsh 4.0, an optional package
-  # But gmsh 3 hasn't been built in a long time. 
-  # New enough versions of gmsh are compatible with fipy.
-  # to install it.
-  # As it is old, it might have some strange pinnings.
-  run_constrained:
-    - gmsh <4.0|>=4.5.2   # [not (win and py2k)]
+    - typer
 
 test:
+  requires:
+    - python {{ python_min }}
   imports:
     - fipy
+  commands:
+    - fipy_test --modules
 
 about:
   home: http://www.ctcms.nist.gov/fipy
